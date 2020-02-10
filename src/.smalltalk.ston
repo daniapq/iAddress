@@ -1,7 +1,7 @@
 SmalltalkCISpec {
   #loading : [
     SCIMetacelloLoadSpec {
-      #baseline : 'SmallSuiteGenerator',
+      #baseline : 'iAddress',
       #directory : 'src',
       #platforms : [ #pharo]
     }
