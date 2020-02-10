@@ -23,6 +23,14 @@ ContactListView >> addContact [
 ]
 
 { #category : #actions }
+ContactListView >> editContact: aContact [
+
+	self call: (ContactView new
+		contact: aContact;
+		yourself)
+]
+
+{ #category : #actions }
 ContactListView >> removeContact: aContact [
 
 	(self confirm: 'Are you sure that you want to remove this contact?')
@@ -39,6 +47,10 @@ ContactListView >> renderContact: aContact on: html [
 		with: aContact emailAddress.
 	html space.
 	html text: '('.
+	html anchor
+		callback: [ self editContact: aContact ];
+		with: 'edit'.
+	html space.
 	html anchor
 		callback: [ self removeContact: aContact ];
 		with: 'remove'.
