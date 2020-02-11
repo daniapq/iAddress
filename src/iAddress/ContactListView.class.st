@@ -25,9 +25,16 @@ ContactListView >> addContact [
 { #category : #actions }
 ContactListView >> editContact: aContact [
 
-	self call: (ContactView new
-		contact: aContact;
-		yourself)
+	| view copy |
+	view := ContactView new.
+	copy := aContact copy.
+	view contact: copy.
+	(self call: view)
+		ifTrue: [ 
+			Contact removeContact: aContact;
+				addContact: copy.
+			self inform: 'Thanks for edit ', copy name ]
+		ifFalse: [ ^ nil ]
 ]
 
 { #category : #actions }
