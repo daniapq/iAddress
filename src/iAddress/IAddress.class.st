@@ -55,6 +55,7 @@ IAddress >> initialize [
 	super initialize.
 	editor := ContactView new.
 	editor contact: self contacts first.
+	editor addMessage: 'Editing...'.
 	editor onAnswer: [ :answer | self inform: 'Saved' ]
 ]
 

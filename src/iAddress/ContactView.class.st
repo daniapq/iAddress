@@ -34,6 +34,13 @@ ContactView >> contact: aContact [
 	contact := aContact
 ]
 
+{ #category : #initialization }
+ContactView >> initialize [
+
+	super initialize.
+	self addDecoration: (WAFormDecoration new buttons: #(cancel save))
+]
+
 { #category : #rendering }
 ContactView >> renderBirthdateOn: html [
 
@@ -46,14 +53,12 @@ ContactView >> renderBirthdateOn: html [
 
 { #category : #rendering }
 ContactView >> renderContentOn: html [
-	html
-		form: [ 
-			self renderNameOn: html.
-			self renderEmailOn: html.
-			self renderBirthdateOn: html.
-			self renderGenderOn: html.
-			self renderSendUpdatesOn: html.
-			self renderSaveOn: html ]
+	
+	self renderNameOn: html.
+	self renderEmailOn: html.
+	self renderBirthdateOn: html.
+	self renderGenderOn: html.
+	self renderSendUpdatesOn: html
 ]
 
 { #category : #rendering }
@@ -87,12 +92,6 @@ ContactView >> renderNameOn: html [
 	html text: 'Name: '.
 	html textInput on: #name of: self contact.
 	html break
-]
-
-{ #category : #rendering }
-ContactView >> renderSaveOn: html [
-	
-	html submitButton on: #save of: self
 ]
 
 { #category : #rendering }
